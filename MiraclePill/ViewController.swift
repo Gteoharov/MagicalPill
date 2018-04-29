@@ -15,11 +15,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var agePickerButton: UIButton!
     
-    var ages = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    var ages: [Int] = []
+    
+    func createAgesPicker() -> [Int] {
+        for age in 6...85 {
+            ages.append(age)
+        }
+        return ages
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = createAgesPicker()
         agePicker.dataSource = self
         agePicker.delegate = self
     }
@@ -49,6 +57,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         agePickerButton.setTitle(String("Your Age: \(ages[row])"), for: UIControlState.normal)
         agePicker.isHidden = true
     }
+    
 
 }
 
